@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  start_time: 2024-01-21 19:00:53
+  description: MyText
+  pacient: one
+  user: one
+
+two:
+  start_time: 2024-01-21 19:00:53
+  description: MyText
+  pacient: two
+  user: two

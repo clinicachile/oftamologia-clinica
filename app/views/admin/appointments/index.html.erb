@@ -1,0 +1,24 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Lista de citas</h1>
+<%= link_to "Crear Paciente y cita", new_admin_pacient_path, class:'btn btn-success' %>
+<%= link_to "Agendar Cita", new_admin_appointment_path, class:'btn btn-primary' %>
+<div id="appointments">
+  <%= month_calendar(events: @appointments) do |date,appointments| %>
+  <div class="text-center">
+    <%= date.day %>
+  </div>
+      <ul class="navbar-nav">
+      <% appointments.each do |appointment| %>
+      
+        <li class='rounded-5 bg-danger text-center'>
+          <%= link_to "#{appointment.pacient.first_name } #{appointment.pacient.last_name}", admin_appointment_path(appointment), class:"text-white px-2 fw-bold" %>
+        </li>
+      
+      <% end %>
+      </ul>
+  <% end %>
+
+</div>
+
+<%= link_to "New appointment", new_admin_appointment_path %>
