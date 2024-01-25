@@ -2,6 +2,5 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 import "popper"
-import "./datatables-simple-demo"
 import "./scripts"
 import "bootstrap"
