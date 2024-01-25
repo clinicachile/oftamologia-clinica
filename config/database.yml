@@ -79,6 +79,4 @@ test:
 #
 production:
   <<: *default
-  database: clinica_oftamologia_production
-  username: clinica_oftamologia
-  password: <%= ENV["CLINICA_OFTAMOLOGIA_DATABASE_PASSWORD"] %>
+  database: <%= ENV['DATABASE_URL'] %> 
