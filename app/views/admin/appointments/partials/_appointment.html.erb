@@ -1,0 +1,3 @@
+<li class='rounded-5 bg-danger text-center my-1'>
+ <%= link_to "#{Dashboard::PacientDecorator.decorate(appointment.pacient).full_name} - #{Dashboard::AppointmentDecorator.decorate(appointment).time_formated}", admin_appointment_path(appointment.id), class:"text-white px-2 fw-bold", style: 'font-size:12px;text-decoration:none;', data: {turbo_frame: :modal} %>
+</li>

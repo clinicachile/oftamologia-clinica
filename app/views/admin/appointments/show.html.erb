@@ -1,10 +1,12 @@
-<p style="color: green"><%= notice %></p>
+<%= turbo_frame_tag :modal do %>  
+  <div class="py-3 px-2">
 
-<%= render @appointment %>
+    <%= @appointment.description %>
 
-<div>
-  <%= link_to "Edit this appointment", edit_admin_appointment_path(@appointment) %> |
-  <%= link_to "Back to appointments", admin_appointments_path %>
+    <div>
+    
+      <%= link_to "Back to appointments", admin_appointments_path %>
 
-  <%= button_to "Destroy this appointment", admin_appointment_path(@appointment), method: :delete %>
-</div>
+    </div>
+  </div>
+<% end %>

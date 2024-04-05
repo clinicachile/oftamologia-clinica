@@ -27,9 +27,12 @@ class Admin::AppointmentsController < ApplicationController
   # POST /appointments or /appointments.json
   def create
     @appointment = Appointment.new(appointment_params)
-    @appointment.user_id = User.first.id
+    @appointment.user_id = User.find(1).id
     respond_to do |format|
       if @appointment.save
+        start_time = params.fetch(:start_time, Date.today).to_date
+        @appointments = Appointment.where(start_time: start_time.beginning_of_month.beginning_of_week..start_time.end_of_month.end_of_week)
+        format.turbo_stream
         format.html { redirect_to admin_appointments_url(@appointment), notice: "La cita se ha creado" }
       else
         format.html { render :new, status: :unprocessable_entity }

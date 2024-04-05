@@ -9,3 +9,6 @@ pin_all_from "app/javascript/controllers", under: "controllers"
 pin "popper", to: 'popper.js', preload: true
 
 pin "bootstrap", to: 'bootstrap.min.js', preload: true
+pin "sweetalert" # @2.1.2
+pin "process" # @2.0.1
+pin "slim-select" # @2.8.2

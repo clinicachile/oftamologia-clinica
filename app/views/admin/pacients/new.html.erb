@@ -1,9 +1,16 @@
-<h1 class="my-3">Nuevo Paciente</h1>
+<%= turbo_frame_tag :modal do %>  
+  <div 
+    id="modal"
+    data-controller="turbo-modal"
+    data-turbo-modal-target="modal"
+    data-action="turbo:submit-end->turbo-modal#submitEnd"
+    
+  >
+    <h2 class="my-3 text-center">Nuevo Paciente</h2>
+    <hr>
+    <%= render "admin/pacients/forms/create", pacient: @pacient %>
 
-<%= render "form", pacient: @pacient %>
+    <br>
 
-<br>
-
-<div>
-  <%= link_to "Back to pacients", admin_appointments_path %>
-</div>
+  </div>
+<% end %>

@@ -1,7 +1,8 @@
-<div class="container">  
+
   <div class="d-flex justify-content-center">
-    <div class="col-md-8">
-      <%= form_with(model: pacient,url: admin_pacients_path) do |form| %>
+    <div class="col-md-10">
+      
+      <%= form_with(model: pacient,url: url_link, method: :type_http) do |form| %>
         <% if pacient.errors.any? %>
           <div style="color: red">
             <h2><%= pluralize(pacient.errors.count, "error") %> prohibited this pacient from being saved:</h2>
@@ -44,16 +45,18 @@
           <%= form.text_field :email, class:"form-control" %>
         </div>
 
-        <h2>Cita</h2>
+        <h3>Cita</h3>
         <%= form.fields_for :appointments do |f| %>
           <div class="mb-3">
             <%= form.datetime_field :start_time, class:'form-control' %>
           </div>
         <% end %>
+        <hr>
         <div>
           <%= form.submit class:"btn btn-success" %>
+          <%= link_to "Volver", admin_appointments_path, class:'btn btn-primary' %>
+
         </div>
       <% end %>
     </div>
   </div>
-</div>

@@ -1,32 +1,13 @@
-<p style="color: green"><%= notice %></p>
 
-<h1>Lista de pacientes</h1>
+<%= link_to "Crear Paciente", new_admin_pacient_path, data:{ turbo_frame: :modal}, class:'btn btn-primary mt-3' %>
+  
+<%= render Shared::HeaderTableComponent.new(headers: Dashboard::PacientDecorator.headers_table_value) %>
+<%= render Shared::BodyTableComponent.new(
+  data: @pacients,
+  model: 'pacients',
+  partial: "admin/pacients/pacient",
+) %>
+      
+ 
 
-<%= link_to "Crear Paciente", new_admin_pacient_path, class:'btn btn-primary' %>
-
-
-<div id="pacients">
-<div class="table-responsive">
-  <table class="table table-striped">
-      <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Nombre Completo</th>
-        <th scope="col">RUN</th>
-        <th scope="col">Edad</th>
-        <th scope="col">Celular</th>
-        <th scope="col">Email</th>
-        <th scope="col">Acciones </th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @pacients.each do |pacient| %>
-        <%= render pacient %>
-
-      <% end %>
-    </tbody>
-  </table>
-</div>
-</div>
 

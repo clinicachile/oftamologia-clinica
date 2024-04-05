@@ -1,8 +1,16 @@
-<h1 class="my-3">Nueva Cita</h1>
+<%= turbo_frame_tag :modal do %>  
 
-<%= render "form", appointment: @appointment %>
+  <div 
+    id="modal"
+    data-controller="turbo-modal"
+    data-turbo-modal-target="modal"
+    data-action="turbo:submit-end->turbo-modal#submitEnd"
+    
+  >
+    <h2 class="my-3 text-center">Nueva Cita</h2>
 
-<br>
+    <%= render "admin/appointments/forms/create", appointment: @appointment %>
 
-<div>
-</div>
+    <br>
+  </div>
+<% end %>

@@ -1,0 +1,12 @@
+<%= month_calendar(events: appointments) do |date,appointments| %>
+  <div class="text-center">
+    <%= date.day %>
+  </div>
+      <ul class="navbar-nav" id="">
+        <% appointments.each do |appointment1| %>
+          
+          <%= render "admin/appointments/partials/appointment", {appointment: appointment1} %>      
+        <% end %>
+      
+      </ul>
+  <% end %>

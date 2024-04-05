@@ -1,0 +1,32 @@
+  <div class="d-flex justify-content-center">
+    <div class="col-md-10">
+
+    <%= form_with(model: appointment, url: admin_appointments_path) do |form| %>
+      <%= render Shared::ShowErrorComponent.new(object:appointment) %>
+
+      <div class="mb-3">
+        <%= form.label :start_time, "Hora Cita", class:'form-label' %>
+        <%= form.datetime_field :start_time, class:'form-control' %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :description, "Descripción",class:'form-label' %>
+        <%= form.text_area :description, class:'form-control' %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :pacient_id, "Paciente", class:'form-label' %>
+        <%= form.select :pacient_id, 
+        Pacient.all.collect {|p| [Dashboard::PacientDecorator.decorate(p).full_name,p.id]}, 
+        {prompt: "Selecciona un paciente"},
+        {data: {controller: 'shared--slim'}} %>
+      </div>
+
+      <div>
+        <%= form.submit "Crear Cita", class:"btn btn-success",style: 'font-size:12px;' %>
+        <%= link_to "Volver", admin_appointments_path, class:'btn btn-primary fw-bold',style: 'font-size:12px;' %>
+
+      </div>
+    <% end %>
+    </div>
+  </div>

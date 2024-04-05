@@ -9,15 +9,25 @@ class Admin::PacientsController < ApplicationController
 
   # GET /pacients/1 or /pacients/1.json
   def show
+    respond_to do |format|
+      format.pdf do 
+        render pdf: "#{Dashboard::PacientDecorator.new(@pacient).full_name.split("  ").join}",
+                page_size: "A4",
+                template: "admin/pacients/pacient.pdf.erb",
+                formats: [:html],
+                layout: 'pdf'
+      end
+    end
   end
 
   # GET /pacients/new
   def new
-    @pacient = Pacient.new; @pacient.appointments.build
+    @pacient = Pacient.new
   end
 
   # GET /pacients/1/edit
   def edit
+
   end
 
   # POST /pacients or /pacients.json
@@ -26,6 +36,7 @@ class Admin::PacientsController < ApplicationController
 
     respond_to do |format|
       if @pacient.save
+        format.turbo_stream
         format.html { redirect_to pacient_url(@pacient), notice: "Pacient was successfully created." }
         format.json { render :show, status: :created, location: @pacient }
       else
@@ -39,6 +50,7 @@ class Admin::PacientsController < ApplicationController
   def update
     respond_to do |format|
       if @pacient.update(pacient_params)
+        format.turbo_stream
         format.html { redirect_to pacient_url(@pacient), notice: "Pacient was successfully updated." }
         format.json { render :show, status: :ok, location: @pacient }
       else

@@ -1,0 +1,48 @@
+
+  <div class="d-flex justify-content-center">
+    <div class="col-md-10">
+      
+      <%= form_with(model: pacient,url: admin_pacients_path) do |form| %>
+
+        <%= render(Shared::ShowErrorComponent.new(object: pacient)) %>
+
+        <div class="d-flex gap-3">
+          <div class="col-md-6 mb-3">
+            <%= form.label :first_name, "Nombre", class:'form-label',style: 'font-size:12px;'  %>
+            <%= form.text_field :first_name, class:'form-control',style: 'font-size:12px;' %>
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <%= form.label :last_name,"Apellidos", class:'form-label',style: 'font-size:12px;' %>
+            <%= form.text_field :last_name, class:'form-control',style: 'font-size:12px;' %>
+          </div>
+        </div>
+        <div class="mb-3">
+          <%= form.label :run, "RUN", class:'form-label',style: 'font-size:12px;' %>
+          <%= form.text_field :run, class:'form-control',style: 'font-size:12px;' %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :age, "Edad", class:'form-label',style: 'font-size:12px;' %>
+          <%= form.number_field :age, class:'form-control',style: 'font-size:12px;' %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :phone, "Numero de celular",class:'form-label',style: 'font-size:12px;' %>
+          <%= form.text_field :phone, class:'form-control',style: 'font-size:12px;' %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :email, "Email", class:'form-label',style: 'font-size:12px;' %>
+          <%= form.text_field :email, class:"form-control",style: 'font-size:12px;' %>
+        </div>
+
+       <hr>
+        <div>
+          <%= form.submit class:"btn btn-success fw-bold",style: 'font-size:12px;' %>
+          <%= link_to "Volver", admin_appointments_path, class:'btn btn-primary fw-bold',style: 'font-size:12px;' %>
+
+        </div>
+      <% end %>
+    </div>
+  </div>
