@@ -1,4 +1,4 @@
-class Admin::PacientsController < ApplicationController
+class Admin::PacientsController < AdminPanelController
   layout 'admin'
   before_action :set_pacient, only: %i[ show edit update destroy ]
 

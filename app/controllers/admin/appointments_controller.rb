@@ -1,4 +1,4 @@
-class Admin::AppointmentsController < ApplicationController
+class Admin::AppointmentsController < AdminPanelController
   layout 'admin'
   before_action :set_appointment, only: %i[ show edit update destroy ]
 
