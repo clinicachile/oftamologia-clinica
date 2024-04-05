@@ -2,9 +2,7 @@
 El software de oftalmología clínica es una herramienta diseñada para mejorar la gestión de pacientes y la organización de citas en consultorios y clínicas oftalmológicas. Está especialmente adaptado para las necesidades específicas de este campo médico.
 
 ## Visuales
-[![desktop.png](https://i.postimg.cc/XYvbRYxH/desktop.png)](https://postimg.cc/Cz9XDY3k)
-[![mobile.png](https://i.postimg.cc/R0kxJQmy/mobile.png)](https://postimg.cc/B8BVdFXB)
-[![map.png](https://i.postimg.cc/qqfKFYTw/map.png)](https://postimg.cc/jwXCwMCn)
+
 ## Empezando 🚀
 
 1. Debes clonar el repositorio
