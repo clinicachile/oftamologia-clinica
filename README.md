@@ -58,6 +58,5 @@ Estamos agradecidos por las contribuciones de la comunidad a este proyecto. Si e
 - Comparte este proyecto con otros
 - Invítanos un café ☕
 - Inicia un nuevo problema o contribuye con un PR
-- Muestra tu agradecimiento diciendo gracias en un nuevo problema.
 
 Gracias por visitarnos, saludos desde Chile
