@@ -83,3 +83,5 @@ gem 'redis'
 gem 'redis-namespace'
 gem 'redis-rails'
 gem "figaro"
+gem "chartkick"
+gem "groupdate"

@@ -12,3 +12,5 @@ pin "bootstrap", to: 'bootstrap.min.js', preload: true
 pin "sweetalert" # @2.1.2
 pin "process" # @2.0.1
 pin "slim-select" # @2.8.2
+pin "chartkick", to: "chartkick.js"
+pin "Chart.bundle", to: "Chart.bundle.js"
