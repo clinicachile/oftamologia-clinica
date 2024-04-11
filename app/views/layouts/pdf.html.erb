@@ -3,7 +3,11 @@
   <head>
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
     <meta charset="utf-8"/>
-    <%= wicked_pdf_stylesheet_link_tag "pdf" %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 
+  'reload' %>
+    <%= wicked_pdf_stylesheet_link_tag "pdf.css" -%>
+    <%= wicked_pdf_stylesheet_link_tag "styles.scss" %>
+    <%= wicked_pdf_stylesheet_link_tag "application.scss" -%>
   </head>
   <body onload="number_pages">
     <div id="header">
@@ -11,6 +15,7 @@
       -->
     </div>
     <div id="content">
+      
       <%= yield %>
     </div>
   </body>

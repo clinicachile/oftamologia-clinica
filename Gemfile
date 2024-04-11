@@ -78,3 +78,8 @@ gem "devise", "~> 4.9"
 gem "simple_calendar", "~> 2.4"
 gem "faker", "~> 3.2"
 gem 'rails-i18n'
+gem "sidekiq", "~> 7.2"
+gem 'redis'
+gem 'redis-namespace'
+gem 'redis-rails'
+gem "figaro"

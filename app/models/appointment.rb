@@ -1,7 +1,8 @@
 class Appointment < ApplicationRecord
 
   validates :start_time,presence: true
-  enum :status,[pendent: 1, confirmation: 2, canceled: 3, completed: 4]
+  
+  enum status: { pending: 1, confirmation: 2, canceled: 3, completed: 4 }
   belongs_to :pacient
   belongs_to :user
 

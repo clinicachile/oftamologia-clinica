@@ -4,18 +4,22 @@ class Admin::PacientsController < AdminPanelController
 
   # GET /pacients or /pacients.json
   def index
+    
     @pacients = Pacient.all
   end
 
   # GET /pacients/1 or /pacients/1.json
   def show
     respond_to do |format|
-      format.pdf do 
-        render pdf: "#{Dashboard::PacientDecorator.new(@pacient).full_name.split("  ").join}",
-                page_size: "A4",
-                template: "admin/pacients/pacient.pdf.erb",
-                formats: [:html],
-                layout: 'pdf'
+      format.html
+      format.pdf do
+        # pdf_string = render_to_string template:"admin/pacients/pdfs/pacient", layout: 'pdf', formats: [:html]
+        # pdf= WickedPdf.new.pdf_from_string(pdf_string)
+        # Shared::ExportPdfsJob.perform_async("#{@pacient.first_name}","admin/pacients/pdfs/pacient")
+        # render pdf: [@pacient.id, @pacient.first_name].join('-'),template: "admin/pacients/pdfs/pacient",formats: [:html],layout: 'pdf'
+        # send_data pdf, filename: 'file.pdf'
+        Shared::ExportPdfsJob.perform_async('admin/pacients/pdfs/pacient',[@pacient.first_name, @pacient.last_name].join('-'))
+        redirect_to root_path, notice: 'PDF generation started successfully.'
       end
     end
   end
@@ -62,11 +66,10 @@ class Admin::PacientsController < AdminPanelController
 
   # DELETE /pacients/1 or /pacients/1.json
   def destroy
-    @pacient.destroy!
+    @pacient.destroy
 
     respond_to do |format|
-      format.html { redirect_to pacients_url, notice: "Pacient was successfully destroyed." }
-      format.json { head :no_content }
+      format.turbo_stream { render turbo_stream: turbo_stream.remove(@pacient)  }
     end
   end
 

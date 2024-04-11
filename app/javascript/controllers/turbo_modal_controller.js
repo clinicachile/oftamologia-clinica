@@ -13,11 +13,12 @@ export default class extends Controller {
   }
 
   submitEnd(e){
+    console.log(e);
     if(e.detail.success){
       this.hideModal()
       swal({
         title: "Buen Trabajo",
-        text: "El Registro se ha hecho exitosamente",
+        text: "La Acción se ha hecho exitosamente",
         icon: "success",
         button: "Salir",
       })
