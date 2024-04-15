@@ -85,3 +85,4 @@ gem 'redis-rails'
 gem "figaro"
 gem "chartkick"
 gem "groupdate"
+gem 'ransack'
