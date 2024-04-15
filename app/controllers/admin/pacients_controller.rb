@@ -5,7 +5,8 @@ class Admin::PacientsController < AdminPanelController
   # GET /pacients or /pacients.json
   def index
     
-    @pacients = Pacient.all
+    @q = Pacient.ransack(params[:q])
+    @pacients = @q.result(distinct: true)
   end
 
   # GET /pacients/1 or /pacients/1.json
@@ -42,10 +43,8 @@ class Admin::PacientsController < AdminPanelController
       if @pacient.save
         format.turbo_stream
         format.html { redirect_to pacient_url(@pacient), notice: "Pacient was successfully created." }
-        format.json { render :show, status: :created, location: @pacient }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @pacient.errors, status: :unprocessable_entity }
       end
     end
   end

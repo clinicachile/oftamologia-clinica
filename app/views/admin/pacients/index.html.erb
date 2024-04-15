@@ -1,13 +1,24 @@
 
-<%= link_to "Crear Paciente", new_admin_pacient_path, data:{ turbo_frame: :modal}, class:'btn btn-primary mt-3' %>
-  
-<%= render Shared::HeaderTableComponent.new(headers: Dashboard::PacientDecorator.headers_table_value) %>
-<%= render Shared::BodyTableComponent.new(
-  data: @pacients,
-  model: 'pacients',
-  partial: "admin/pacients/pacient",
-) %>
-      
- 
+  <div class="d-flex justify-content-between">
+    
+    <%= link_to "Crear Paciente", new_admin_pacient_path, data:{ turbo_frame: :modal}, class:'btn btn-primary mt-3' %>
+    
+      <%= search_form_for @q, url: admin_pacients_path, data: {turbo_frame: :search} do |f| %>
+        
+      <%= f.search_field :first_name_or_last_name_cont, placeholder: "Juan Perez",oninput: 'this.form.requestSubmit()',autofocus: true, autocomplete: 'off' %>
+        <%= f.submit "Buscar" %>
+
+      <% end %>
+   
+  </div>
+<%= Time.now %>
+<%= turbo_frame_tag :search do %>
+  <%= render Shared::HeaderTableComponent.new(headers: Dashboard::PacientDecorator.headers_table_value) %>
+  <%= render Shared::BodyTableComponent.new(
+    data: @pacients,
+    model: 'pacients',
+    partial: "admin/pacients/pacient",
+  ) %>
+<% end %>
 
 

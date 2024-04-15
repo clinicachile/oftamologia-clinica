@@ -86,3 +86,4 @@ gem "figaro"
 gem "chartkick"
 gem "groupdate"
 gem 'ransack'
+gem 'pagy'
