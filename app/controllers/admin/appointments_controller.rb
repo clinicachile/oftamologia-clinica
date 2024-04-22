@@ -21,13 +21,12 @@ class Admin::AppointmentsController < AdminPanelController
 
   # POST /appointments or /appointments.json
   def create
-    @appointment = ::Admin::Appointments::AppointmentCreateService.new(appointment_params)
+    @appointment = Appointment.new(appointment_params)
+    service = ::Admin::Appointments::AppointmentCreateService.new(appointment_params)
     respond_to do |format|
-      if @appointment.call
+      if service.call
         @appointments = date_appointment
-
         format.turbo_stream
-        format.html { redirect_to admin_appointments_url(@appointment), notice: 'La cita se ha creado' }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
