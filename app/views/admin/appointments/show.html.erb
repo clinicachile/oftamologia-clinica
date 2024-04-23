@@ -4,6 +4,7 @@
     <hr>
       <%= @appointment.description %>
     <hr>
+    <p>Horario: <%= @appointment.start_time.strftime("%A %d/%m/%y") %> </p> 
     <div>
     
       <%= link_to "Volver", admin_appointments_path, class:'btn btn-primary' %>

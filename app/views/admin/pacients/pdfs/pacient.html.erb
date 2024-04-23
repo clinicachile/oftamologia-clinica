@@ -4,8 +4,9 @@
     <h4 style="text-align:center;"> Identificación del paciente</h4>
     
     <table style="width:100%;" border="1">
+    <tr> <th style="width:15%;">Nombre <td style="width:85%;"><%= "#{@pacient.first_name} #{@pacient.last_name}"%><td style="width:400px;">Edad<td> <%= @pacient.age%>
 
-    <tr> <th>FEMALES<td style="width:200px;">0.0002<td style="width:400px;">43%<td style="width:400px;">Daniel Jimenez
+    <tr> <th>RUT<td style="width:200px;"><%= @pacient.run %><td style="width:400px;">Celular<td style="width:400px;"><%= @pacient.phone %>
   </table>
   </div>
   
