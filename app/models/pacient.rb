@@ -1,7 +1,8 @@
 class Pacient < ApplicationRecord
-  has_many :appointments, dependent: :destroy
   validates :first_name, presence: true
   validates :last_name, presence: true
+
+  has_many :appointments, dependent: :destroy
 
   def self.ransackable_attributes(auth_object = nil)
     %w[first_name last_name]
