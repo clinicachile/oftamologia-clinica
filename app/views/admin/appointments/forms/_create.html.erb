@@ -21,7 +21,10 @@
         {prompt: "Selecciona un paciente"},
         {data: {controller: 'shared--slim'}} %>
       </div>
-
+      <div class="mb-3">
+        <%= form.label :price, "Precio", class: 'form-label' %>
+        <%= form.number_field :price, class:'form-control', placeholder: '50000' %>
+      </div>
       <div>
         <%= form.submit "Crear Cita", class:"btn btn-success",style: 'font-size:12px;' %>
         <%= link_to "Volver", admin_appointments_path, class:'btn btn-primary fw-bold',style: 'font-size:12px;' %>

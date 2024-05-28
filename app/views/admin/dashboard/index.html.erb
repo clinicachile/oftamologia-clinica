@@ -1,22 +1,33 @@
 <div class="my-3"> 
   <div class="d-flex gap-3">
-    <div class="col-md-3" style="height:4rem;">
-      <div class="contenedor rounded-2">
-        <div class="d-flex justify-content-between px-3 py-2">
-          <p class="text-white fs-3"><%= @users %> </p>
-          <i class="bi bi-person display-3" style="color:white;"></i>
-        </div>
+    <div class="col-md-3">
+      <div class="card text-bg-primary mb-3">
+        <div class="card-header fw-bold">N° Pacientes</div>
+          <div class="card-body d-flex justify-content-between">
+            <i class="bi bi-person display-5"></i>
+            <h5 class="card-title fs-1"><%= @users %></h5>
+
+          </div>
       </div>
     </div>
- 
     <div class="col-md-3">
-      <div class="contenedor rounded-2">
-        1
+      <div class="card text-bg-success mb-3">
+        <div class="card-header fw-bold">Ingresos / Mes actual</div>
+          <div class="card-body d-flex justify-content-between">
+            <i class="bi bi-bank display-5"></i>
+            <h5 class="card-title fs-1" data-controller="shared--formated-number">$ <%= @moneys %></h5>
+
+          </div>
       </div>
     </div>
       <div class="col-md-3">
-      <div class="contenedor rounded-2">
-        1
+      <div class="card text-bg-success mb-3">
+        <div class="card-header fw-bold">N° Citas / Hoy</div>
+          <div class="card-body d-flex justify-content-between">
+            <i class="bi bi-bank display-5"></i>
+            <h5 class="card-title fs-1"> <%= @appointments %> </h5>
+
+          </div>
       </div>
     </div>
   </div>

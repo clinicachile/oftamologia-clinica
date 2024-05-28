@@ -1,8 +1,8 @@
-<div style="color: red">
+<div class="bg-danger rounded-2 px-2">
 
-    <ul>
+    <ul style="padding-left:0;">
       <% @object.errors.each do |error| %>
-        <li><%= error.full_message %></li>
+        <li class="nav-link text-white"><%= error.full_message %></li>
       <% end %>
     </ul>
 </div>
