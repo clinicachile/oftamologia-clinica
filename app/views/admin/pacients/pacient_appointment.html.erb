@@ -1,0 +1,16 @@
+<%= turbo_frame_tag :modal do %>  
+  <div 
+    id="modal"
+    data-controller="turbo-modal"
+    data-turbo-modal-target="modal"
+    data-action="turbo:submit-end->turbo-modal#submitEnd"
+    class="form_nested"
+  >
+    <div class="mt-3"></div>
+  
+    <%= render "admin/pacients/forms/nested_create", pacient: @pacient %>
+
+    <br>
+
+  </div>
+<% end %>

@@ -1,0 +1,67 @@
+  <div class="d-flex justify-content-center">
+    <div class="col-md-10">
+
+    <%= form_with(model: pacient, url: pacient_appointment_post_admin_pacients_path) do |form| %>
+      <%= render Shared::ShowErrorComponent.new(object:pacient) %>
+      <div class="d-flex flex-column flex-md-row justify-content-evenly gap-3">
+        <div class="col-md-6">
+          <div class="gap-1 d-flex">
+
+            <div class="col-md-6 mb-3">
+              <%= form.label :first_name, "Nombre", class:'form-label',style: 'font-size:12px;'  %>
+              <%= form.text_field :first_name, class:'form-control',style: 'font-size:12px;' %>
+            </div>
+
+            <div class="col-md-6 mb-3">
+              <%= form.label :last_name,"Apellidos", class:'form-label',style: 'font-size:12px;' %>
+              <%= form.text_field :last_name, class:'form-control',style: 'font-size:12px;' %>
+            </div>
+          </div>
+          <div class="mb-3">
+            <%= form.label :run, "RUN", class:'form-label',style: 'font-size:12px;' %>
+            <%= form.text_field :run, class:'form-control',style: 'font-size:12px;' %>
+          </div>
+
+          <div class="mb-3">
+            <%= form.label :age, "Edad", class:'form-label',style: 'font-size:12px;' %>
+            <%= form.number_field :age, class:'form-control',style: 'font-size:12px;' %>
+          </div>
+
+          <div class="mb-3">
+            <%= form.label :phone, "Numero de celular",class:'form-label',style: 'font-size:12px;' %>
+            <%= form.text_field :phone, class:'form-control',style: 'font-size:12px;' %>
+          </div>
+
+          <div class="mb-3">
+            <%= form.label :email, "Email", class:'form-label',style: 'font-size:12px;' %>
+            <%= form.text_field :email, class:"form-control",style: 'font-size:12px;' %>
+          </div>
+        </div>
+  
+
+        <div class="col-md-6">
+          <%= form.fields_for :appointments do |appointments_form| %>
+            <%= appointments_form.hidden_field :_destroy %>
+            <div class="mb-3">
+              <%= appointments_form.label :start_time,"Hora Cita" ,class:'form-label',style: 'font-size:12px;' %>
+              <%= appointments_form.datetime_field :start_time, class: 'form-control' %>
+            </div>
+            <div class="mb-3">
+              <%= appointments_form.label :description, "Descripción", class:'form-label', style: 'font-size:12px;' %>
+              <%= appointments_form.text_area :description, class:'form-control' %>
+            </div>
+            <div class="mb-3">
+              <%= appointments_form.label :price,"Precio", class:'form-label', style: 'font-size:12px;' %>
+              <%= appointments_form.number_field :price, class:'form-control' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div>
+        <%= form.submit "Crear Paciente y cita", class:"btn btn-success",style: 'font-size:12px;' %>
+        <%= link_to "Volver", admin_appointments_path, class:'btn btn-primary fw-bold',style: 'font-size:12px;' %>
+
+      </div>
+    <% end %>
+    </div>
+  </div>

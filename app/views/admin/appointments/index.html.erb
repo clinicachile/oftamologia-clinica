@@ -1,6 +1,6 @@
 
 <h1>Lista de citas</h1>
-<%= link_to "Crear Paciente y cita", new_admin_pacient_path, class:'btn btn-success' %>
+<%= link_to "Crear Paciente y cita", pacient_appointment_admin_pacients_path,data: {turbo_frame: :modal}, class:'btn btn-success' %>
 <%= link_to "Agendar Cita", new_admin_appointment_path,data: {turbo_frame: :modal}, class:'btn btn-primary' %>
 <div id="appointments">
   <%= render "admin/appointments/partials/events",{appointments:@appointments} %>

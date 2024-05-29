@@ -23,6 +23,20 @@ class Admin::PacientsController < AdminPanelController
     end
   end
 
+  def pacient_appointment
+    @pacient = Pacient.new
+    @pacient.appointments.build
+  end
+
+  def pacient_appointment_post
+    @pacient = Pacient.new(pacient_params)
+    if @pacient.save
+
+    else
+      render :pacient_appointment, status: :unprocessable_entity
+    end
+  end
+
   # GET /pacients/new
   def new
     @pacient = Pacient.new
@@ -79,6 +93,6 @@ class Admin::PacientsController < AdminPanelController
   # Only allow a list of trusted parameters through.
   def pacient_params
     params.require(:pacient).permit(:first_name, :last_name, :run, :age, :phone, :email,
-                                    appointments_params: %i[start_time description])
+                                    appointments_attributes: %i[start_time description status price])
   end
 end
