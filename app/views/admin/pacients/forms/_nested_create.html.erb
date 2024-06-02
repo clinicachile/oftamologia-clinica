@@ -1,7 +1,7 @@
   <div class="d-flex justify-content-center">
     <div class="col-md-10">
 
-    <%= form_with(model: pacient, url: pacient_appointment_post_admin_pacients_path) do |form| %>
+    <%= form_for(pacient, url: pacient_appointment_post_admin_pacients_path) do |form| %>
       <%= render Shared::ShowErrorComponent.new(object:pacient) %>
       <div class="d-flex flex-column flex-md-row justify-content-evenly gap-3">
         <div class="col-md-6">
@@ -41,6 +41,7 @@
 
         <div class="col-md-6">
           <%= form.fields_for :appointments do |appointments_form| %>
+          
             <%= appointments_form.hidden_field :_destroy %>
             <div class="mb-3">
               <%= appointments_form.label :start_time,"Hora Cita" ,class:'form-label',style: 'font-size:12px;' %>
