@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     end
     resources :appointments
     get 'imports/create_pdf'
+    get '/preview/:id', to: 'pdf#preview', as: :preview
   end
 
   root 'home#index'
