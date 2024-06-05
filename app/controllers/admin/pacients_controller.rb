@@ -30,10 +30,20 @@ class Admin::PacientsController < AdminPanelController
 
   def pacient_appointment_post
     @pacient = Pacient.new(pacient_params)
-    if @pacient.valid?
-      puts 'arreglado'
-    else
-      render :pacient_appointment, status: :unprocessable_entity
+    @pacient.appointments.each do |app|
+      app.user_id = current_user.id
+      app.pacient_id = @pacient.id
+    end
+    respond_to do |format|
+      if @pacient.save
+
+        format.turbo_stream do
+          render(turbo_stream: [turbo_stream.replace('appointments', partial: 'admin/appointments/partials/events',
+                                                                     locals: { appointments: date_appointment })])
+        end
+      else
+        format.html { render :pacient_appointment, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -94,5 +104,11 @@ class Admin::PacientsController < AdminPanelController
   def pacient_params
     params.require(:pacient).permit(:first_name, :last_name, :run, :age, :phone, :email,
                                     appointments_attributes: %i[start_time description status price _destroy])
+  end
+
+  def date_appointment
+    start_time = params.fetch(:start_time, Date.today).to_date
+    @appointments = Appointment.where(start_time: start_time.beginning_of_month.beginning_of_week..start_time.end_of_month.end_of_week)
+    @appointments
   end
 end

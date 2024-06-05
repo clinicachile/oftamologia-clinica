@@ -15,7 +15,8 @@ module Admin
 
       def appointment_create
         @appointment = Appointment.new(@params)
-        @appointment.user_id = User.find(1).id
+        @appointment.user_id = current_user
+
         if @appointment.save
           true
         else

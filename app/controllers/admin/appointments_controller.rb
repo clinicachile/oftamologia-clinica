@@ -65,7 +65,7 @@ class Admin::AppointmentsController < AdminPanelController
 
   # Only allow a list of trusted parameters through.
   def appointment_params
-    params.require(:appointment).permit(:start_time, :description, :pacient_id, :user_id, :price)
+    params.require(:appointment).permit(:start_time, :description, :pacient_id, :price)
   end
 
   def date_appointment
