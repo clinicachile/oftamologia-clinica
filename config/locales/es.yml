@@ -2,4 +2,16 @@ es:
   simple_calendar: 
     previous: "Anterior"
     next: "Siguiente"
-   
+  activerecord: 
+    models: 
+      appointment: 'Cita'
+      pacient: 'Paciente'
+    attributes:
+      appointment:
+        start_time: 'Hora Cita'
+        description: 'Descripción'
+        price: 'Precio'
+        pacient: 'Paciente'
+      pacient: 
+        first_name: 'Nombre'
+        last_name: 'Apellido'

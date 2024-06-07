@@ -22,10 +22,10 @@ class Admin::AppointmentsController < AdminPanelController
   # POST /appointments or /appointments.json
   def create
     @appointment = Appointment.new(appointment_params)
-    service = ::Admin::Appointments::AppointmentCreateService.new(appointment_params)
+    @appointment.user_id = current_user.id
     respond_to do |format|
-      if service.call
-        @appointments = date_appointment
+      if @appointment.save
+
         format.turbo_stream
       else
         format.html { render :new, status: :unprocessable_entity }

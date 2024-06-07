@@ -3,7 +3,6 @@
 
     <%= form_with(model: appointment, url: admin_appointments_path) do |form| %>
       <%= render Shared::ShowErrorComponent.new(object:appointment) %>
-
       <div class="mb-3">
         <%= form.label :start_time, "Hora Cita", class:'form-label' %>
         <%= form.datetime_field :start_time, class:'form-control' %>

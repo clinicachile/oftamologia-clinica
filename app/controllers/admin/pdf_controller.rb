@@ -10,6 +10,8 @@ class Admin::PdfController < ApplicationController
     pdf.table(table_data, width: 500, cell_style: { inline_format: true })
     pdf.move_down 20
     pdf.text 'Citas', size: 25, align: :left
+    pdf.table(appointments_register)
+
     send_data(pdf.render, filename: 'hello.pdf', type: 'application/pdf', disposition: 'inline')
   end
 
@@ -17,5 +19,12 @@ class Admin::PdfController < ApplicationController
 
   def pacient_find
     @pacient = Pacient.find(params[:id])
+  end
+
+  def appointments_register
+    [['Inicio de fecha', 'Description', 'Precio', 'Estado de Pago']] + @pacient.appointments.map do |e|
+                                                                         [e.start_time.to_s, e.description.to_s, e.price.to_s,
+                                                                          e.status.to_s]
+                                                                       end
   end
 end
